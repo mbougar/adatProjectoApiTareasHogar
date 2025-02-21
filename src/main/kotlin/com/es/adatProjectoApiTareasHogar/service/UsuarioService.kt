@@ -25,7 +25,6 @@ class UsuarioService : UserDetailsService {
     @Autowired
     private lateinit var apiService: ExternalApiService
 
-
     override fun loadUserByUsername(username: String?): UserDetails {
         var usuario: Usuario = usuarioRepository
             .findByUsername(username!!)
