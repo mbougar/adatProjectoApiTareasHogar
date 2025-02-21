@@ -50,7 +50,7 @@ class UsuarioService : UserDetailsService {
         }
 
         if(usuarioRepository.findByUsername(usuarioInsertadoDTO.username).isPresent){
-            throw Exception("Usuario ${usuarioInsertadoDTO.username} ya está registrado")
+            throw BadRequestException("Usuario ${usuarioInsertadoDTO.username} ya está registrado")
         }
 
         val emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$".toRegex()
