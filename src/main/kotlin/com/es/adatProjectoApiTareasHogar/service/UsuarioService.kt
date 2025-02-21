@@ -49,8 +49,16 @@ class UsuarioService : UserDetailsService {
             throw BadRequestException("Uno o más campos vacios")
         }
 
+        if(usuarioInsertadoDTO.rol != "USER" && usuarioInsertadoDTO.rol != "ADMIN"){
+            throw BadRequestException("El rol asignado al usuario no es válido")
+        }
+
         if(usuarioRepository.findByUsername(usuarioInsertadoDTO.username).isPresent){
             throw BadRequestException("Usuario ${usuarioInsertadoDTO.username} ya está registrado")
+        }
+
+        if(usuarioRepository.findByEmail(usuarioInsertadoDTO.email).size != 0){
+            throw BadRequestException("Email ${usuarioInsertadoDTO.email} ya está registrado")
         }
 
         val emailRegex = "^[A-Za-z0-9+_.-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$".toRegex()

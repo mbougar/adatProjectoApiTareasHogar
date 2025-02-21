@@ -52,8 +52,6 @@ class UsuarioController {
             throw UnauthorizedException("Credenciales incorrectas")
         }
 
-        // SI PASAMOS LA AUTENTICACIÓN, SIGNIFICA QUE ESTAMOS BIEN AUTENTICADOS
-        // PASAMOS A GENERAR EL TOKEN
         var token = tokenService.generarToken(authentication)
 
         return ResponseEntity(mapOf("token" to token), HttpStatus.CREATED)

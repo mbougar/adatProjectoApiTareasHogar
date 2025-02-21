@@ -9,4 +9,5 @@ import java.util.*
 interface UsuarioRepository : MongoRepository<Usuario, String> {
 
     fun findByUsername(username: String) : Optional<Usuario>
+    fun findByEmail(email: String): MutableList<Usuario>
 }
