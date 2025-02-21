@@ -104,3 +104,95 @@ Cada tarea creada por un usuario o asignada por un administrador tendrá los sig
 | `500 Internal Server Error` | Error inesperado. |
 
 ---
+
+## Pruebas Gestión Usuarios
+
+### Configuración de la conexión a Mongo
+
+Se ha usado una variable de entorno para configurar la URI de MongoDB, además se han añadido las clases necesarias para gestionar la conexión a la base de datos usando Spring (Controller, Service y Repository)
+
+![ConexionMongo.png](src/main/resources/screenshots/ConexionMongo.png)
+
+### Implementación de los endpoints relativos a realizar login y registro
+
+Se han implementado los endpoints necesarios para realizar un login y registro asi como las posibles excepciones que estos endpoints pueden levantar.
+
+ - `POST` `/usuarios/login`: Las posibles respuestas son 201 created, 401 unathorized o 500 internal server error.
+ - `POST` `/usuarios/register`: Las posibles respuestas son 201 created, 401 unathorized o 500 internal server error.
+
+El proceso de login da como resultado un token JWT que permite al usuario autorizarse en futuras peticiones.
+
+![EndpointLogin.png](src/main/resources/screenshots/EndpointLogin.png)
+
+### Pruebas de correcto funcionamiento de la gestión de usuarios de la API
+
+#### Login
+
+ - 201 Created: El usuario ha podido iniciar sesion correctamente y devuelve el token.
+
+Imagen Insomnia:
+
+![loginInsomnia201.png](src/main/resources/screenshots/loginInsomnia201.png)
+
+Imagen APP:
+
+![loginApp201.png](src/main/resources/screenshots/loginApp201.png)
+
+Imagen BBDD:
+
+![loginDatabase201.png](src/main/resources/screenshots/loginDatabase201.png)
+
+
+ - 401 Unauthorized: El usuario ha introducido credenciales incorrectas.
+
+Imagen Insomnia:
+
+![loginInsomnia401.png](src/main/resources/screenshots/loginInsomnia401.png)
+
+Imagen APP:
+
+![loginApp401.png](src/main/resources/screenshots/loginApp401.png)
+
+- 500 Internal Server Error: Ha ocurrido un error insesperado o no se ha enviado un body (no es posible obtenerlo desde la app).
+
+Imagen Insomnia:
+
+![loginInsomnia500.png](src/main/resources/screenshots/loginInsomnia500.png)
+
+
+#### Register
+
+- 201 Created: El usuario ha podido crear un usuario correctamente.
+
+Imagen Insomnia:
+
+![registerInsomnia201.png](src/main/resources/screenshots/registerInsomnia201.png)
+
+Imagen APP:
+
+![registerApp201.png](src/main/resources/screenshots/registerApp201.png)
+
+Imagen BBDD (la primera imagen muestra el usuario creado con insomnia y la segunda el usuario creado con la app):
+
+![registerDatabase201.png](src/main/resources/screenshots/registerDatabase201.png)
+
+![registerDatabase201_2.png](src/main/resources/screenshots/registerDatabase201_2.png)
+
+
+- 400 Bad Request: El usuario ha introducido datos inválidos, esta excepción puede ser levantada por multiples razones (usuario repetido, correo repetido, municipio o provincia inválidos, contraseñas no iguales, campos vacíos o email inválido).
+
+Imagen Insomnia:
+
+![registerInsomnia400.png](src/main/resources/screenshots/registerInsomnia400.png)
+
+![registerInsomnia400_2.png](src/main/resources/screenshots/registerInsomnia400_2.png)
+
+Imagen APP (las contraseñas no coinciden):
+
+![registerApp400.png](src/main/resources/screenshots/registerApp400.png)
+
+- 500 Internal Server Error: Ha ocurrido un error insesperado o no se ha enviado un body (no es posible obtenerlo desde la app).
+
+Imagen Insomnia:
+
+![registerInsomnia500.png](src/main/resources/screenshots/registerInsomnia500.png)
