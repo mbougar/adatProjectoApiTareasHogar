@@ -1,8 +1,10 @@
 package com.es.adatProjectoApiTareasHogar.util
 
+import com.es.adatProjectoApiTareasHogar.dto.TareaDTO
 import com.es.adatProjectoApiTareasHogar.dto.UsuarioDTO
 import com.es.adatProjectoApiTareasHogar.dto.UsuarioRegisterDTO
 import com.es.adatProjectoApiTareasHogar.model.Direccion
+import com.es.adatProjectoApiTareasHogar.model.Tarea
 import com.es.adatProjectoApiTareasHogar.model.Usuario
 import org.springframework.security.crypto.password.PasswordEncoder
 
@@ -48,6 +50,18 @@ object DTOMapper {
             username = usuario.username,
             email = usuario.email,
             rol = usuario.roles
+        )
+    }
+
+    fun entityToTareaDTO(tarea: Tarea): TareaDTO {
+        return TareaDTO(
+            id = tarea._id,
+            titulo = tarea.titulo,
+            desc = tarea.desc,
+            estado = tarea.estado,
+            usuario = tarea.usuario,
+            fechCreacion = tarea.fechCreacion,
+            fechActualizacion = tarea.fechActualizacion
         )
     }
 }
