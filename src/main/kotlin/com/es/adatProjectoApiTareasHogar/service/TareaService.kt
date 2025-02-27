@@ -44,8 +44,7 @@ class TareaService {
             fechActualizacion = fechaActual
         )
 
-        tareaRepository.save(tarea)
-        return DTOMapper.entityToTareaDTO(tarea)
+        return DTOMapper.entityToTareaDTO(tareaRepository.save(tarea))
     }
 
     fun obtenerTodasTareas(): List<TareaDTO> {
@@ -84,8 +83,7 @@ class TareaService {
             fechActualizacion = Date()
         )
 
-        tareaRepository.save(nuevaTarea)
-        return DTOMapper.entityToTareaDTO(nuevaTarea)
+        return DTOMapper.entityToTareaDTO(tareaRepository.save(nuevaTarea))
     }
 
     fun eliminarTarea(id: String) {
