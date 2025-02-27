@@ -196,3 +196,27 @@ Imagen APP (las contraseñas no coinciden):
 Imagen Insomnia:
 
 ![registerInsomnia500.png](src/main/resources/screenshots/registerInsomnia500.png)
+
+
+---
+
+## Pruebas Gestión Tareas
+
+### Usuario con rol USER
+
+- 201 Created: El usuario ha podido crear una tarea.
+
+Imagen Insomnia:
+
+
+
+Imagen APP:
+
+
+
+Imagen BBDD:
+
+
+
+
+### Usuario con rol ADMIN
