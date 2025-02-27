@@ -77,10 +77,12 @@ class TareaService {
         }
 
         val nuevaTarea = tarea.copy(
-            titulo = tareaDTO.titulo,
-            desc = tareaDTO.desc,
+            _id = tarea._id,
+            titulo = tarea.titulo,
+            desc = tarea.desc,
             estado = if (tareaDTO.estado.isBlank()) tarea.estado else tareaDTO.estado,
-            fechActualizacion = Date()
+            fechActualizacion = Date(),
+            fechCreacion = tarea.fechCreacion
         )
 
         return DTOMapper.entityToTareaDTO(tareaRepository.save(nuevaTarea))
