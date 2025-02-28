@@ -200,23 +200,220 @@ Imagen Insomnia:
 
 ---
 
-## Pruebas Gestión Tareas
+# Pruebas Gestión Tareas
 
-### Usuario con rol USER
+## Usuario con rol USER
 
-- 201 Created: El usuario ha podido crear una tarea.
+### Ver todas SUS tareas
+
+- 200 OK: Operación exitosa.
 
 Imagen Insomnia:
 
-
+![img.png](src/main/resources/screenshots/Part3/img.png)
 
 Imagen APP:
 
+![img_1.png](src/main/resources/screenshots/Part3/img_1.png)
 
+- 401 Unauthorized: No autenticado o token inválido (No es posible de obtener en la app).
+
+Imagen Insomnia:
+
+![img_2.png](src/main/resources/screenshots/Part3/img_2.png)
+
+---
+
+### Marcar como hecha una tarea propia
+
+- 200 OK: Operación exitosa.
+
+Imagen Insomnia:
+
+![img_3.png](src/main/resources/screenshots/Part3/img_3.png)
+
+Imagen APP:
+
+![img_4.png](src/main/resources/screenshots/Part3/img_4.png)
 
 Imagen BBDD:
 
+![img_5.png](src/main/resources/screenshots/Part3/img_5.png)
+
+- 401 Unauthorized: No autenticado o token inválido.
+
+Imagen Insomnia:
+
+![img_6.png](src/main/resources/screenshots/Part3/img_6.png)
+
+- 404 Not Found: No se encuentra la tarea con ese ID (solo obtenible en insomnia.
+
+Imagen Insomnia:
+
+![img_26.png](src/main/resources/screenshots/Part3/img_26.png)
 
 
+---
 
-### Usuario con rol ADMIN
+### Eliminar una tarea propia
+
+
+- 204 No Content: Operación exitosa y no devuelve nada.
+
+Imagen Insomnia:
+
+![img_7.png](src/main/resources/screenshots/Part3/img_7.png)
+
+Imagen APP (La tarea 1 ya no existe porque se ha eliminado, también se podría hacer pulsando el icono de eliminar):
+
+![img_8.png](src/main/resources/screenshots/Part3/img_8.png)
+
+Imagen BBDD:
+
+![img_9.png](src/main/resources/screenshots/Part3/img_9.png)
+
+
+Imagen Insomnia:
+
+![img_10.png](src/main/resources/screenshots/Part3/img_10.png)
+
+
+- 403 Forbidden: Acceso denegado por permisos insuficientes.
+
+Imagen Insomnia (Se ha intentado eliminar una tarea que no es del usuario, solo se puede hacer desde insomnia:
+
+![img_11.png](src/main/resources/screenshots/Part3/img_11.png)
+
+- 404 Not Found: No se encuentra la tarea con ese ID (solo obtenible en insomnia.
+
+Imagen Insomnia:
+
+![img_25.png](src/main/resources/screenshots/Part3/img_25.png)
+
+
+---
+
+### Darse de alta A SÍ MISMO una tarea
+
+
+- 200 OK: Operación exitosa.
+
+Imagen Insomnia:
+
+![img_12.png](src/main/resources/screenshots/Part3/img_12.png)
+
+Imagen APP:
+
+![img_13.png](src/main/resources/screenshots/Part3/img_13.png) ![img_14.png](src/main/resources/screenshots/Part3/img_14.png)
+
+Imagen BBDD:
+
+![img_15.png](src/main/resources/screenshots/Part3/img_15.png)
+
+
+- 400 Bad Request: Datos inválidos o formato incorrecto (En este caso, el titulo de la tarea debe ser único por usuario, podrían existir dos tareas con el mismo nombre, pero no asignadas al mismo usuario).
+
+Imagen Insomnia:
+
+![img_17.png](src/main/resources/screenshots/Part3/img_17.png)
+
+
+- 401 Unauthorized: No autenticado o token inválido.
+
+Imagen Insomnia:
+
+![img_18.png](src/main/resources/screenshots/Part3/img_18.png)
+
+
+- 403 Forbidden: Acceso denegado por permisos insuficientes (Solo se puede por Insomnia, en la APP simplemente no generaría la tarea).
+
+Imagen Insomnia:
+
+![img_16.png](src/main/resources/screenshots/Part3/img_16.png)
+
+
+---
+
+## Usuario con rol ADMIN
+
+
+### Ver todas las tareas
+
+- 200 OK: Operación exitosa.
+
+Imagen Insomnia:
+
+![img_19.png](src/main/resources/screenshots/Part3/img_19.png)
+
+Imagen APP:
+
+![img_20.png](src/main/resources/screenshots/Part3/img_20.png)
+
+- 401 Unauthorized: Token inválido (solo podible si ponemos mal el token).
+
+Imagen Insomnia:
+
+![img_21.png](src/main/resources/screenshots/Part3/img_21.png)
+
+---
+
+### Eliminar cualquier tarea de cualquier usuario
+
+- 204 No Content: Operación exitosa y no devuelve nada (En este caso eliminamos una tarea del usuario manuelBouza desde el admin).
+
+Imagen Insomnia:
+
+![img_22.png](src/main/resources/screenshots/Part3/img_22.png)
+
+Imagen APP:
+
+![img_23.png](src/main/resources/screenshots/Part3/img_23.png)
+
+Imagen BBDD (ahora la bbdd tiene 4 entradas en vez de 3):
+
+![img_24.png](src/main/resources/screenshots/Part3/img_24.png)
+
+- 401 Unauthorized: Token inválido (solo podible si ponemos mal el token).
+
+Imagen Insomnia:
+
+![img_21.png](src/main/resources/screenshots/Part3/img_21.png)
+
+- 404 Not Found: No se encuentra la tarea con ese ID (solo obtenible en insomnia.
+
+Imagen Insomnia:
+
+![img_25.png](src/main/resources/screenshots/Part3/img_25.png)
+
+
+---
+
+### Dar de alta tareas a cualquier usuario
+
+- 200 OK: Operación exitosa.
+
+Imagen Insomnia:
+
+![img_28.png](src/main/resources/screenshots/Part3/img_28.png)
+
+Imagen APP:
+
+![img_29.png](src/main/resources/screenshots/Part3/img_29.png)
+
+Imagen BBDD:
+
+![img_30.png](src/main/resources/screenshots/Part3/img_30.png)
+
+
+- 400 Bad Request: Datos inválidos o formato incorrecto (En este caso, el titulo de la tarea debe ser único por usuario, podrían existir dos tareas con el mismo nombre, pero no asignadas al mismo usuario).
+
+Imagen Insomnia:
+
+![img_27.png](src/main/resources/screenshots/Part3/img_27.png)
+
+
+- 401 Unauthorized: Token inválido.
+
+Imagen Insomnia:
+
+![img_31.png](src/main/resources/screenshots/Part3/img_31.png)
