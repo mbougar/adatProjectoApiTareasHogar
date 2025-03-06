@@ -1,6 +1,6 @@
 # API REST - Gestión de Tareas del Hogar
 
-[Watch the video]([https://drive.google.com/file/d/FILE_ID/view](https://drive.google.com/file/d/1P7rnOt3tTyvKDs65awpbULc0tkjDQkV6/view))
+Se puede descargar el video que muestra el funcionamiento de la api en una aplicación de android aqui: https://drive.google.com/file/d/1P7rnOt3tTyvKDs65awpbULc0tkjDQkV6/view
 
 
 ## Descripción del Proyecto
